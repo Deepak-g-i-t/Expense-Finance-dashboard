@@ -1,4 +1,4 @@
-from passlib.context import CryptContext
+import bcrypt
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from typing import Optional
@@ -10,16 +10,18 @@ from config import get_settings
 import models
 
 settings = get_settings()
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 security = HTTPBearer()
 
 
 def hash_pin(pin: str) -> str:
-    return pwd_context.hash(pin)
+    # Use bcrypt directly to avoid passlib+bcrypt 4.0 issues
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(pin.encode('utf-8'), salt)
+    return hashed.decode('utf-8')
 
 
 def verify_pin(plain_pin: str, hashed_pin: str) -> bool:
-    return pwd_context.verify(plain_pin, hashed_pin)
+    return bcrypt.checkpw(plain_pin.encode('utf-8'), hashed_pin.encode('utf-8'))
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
