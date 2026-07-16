@@ -10,6 +10,16 @@ app = FastAPI(
     version="1.0.0",
 )
 
+import traceback
+from fastapi import Request
+from fastapi.responses import JSONResponse
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    error_details = traceback.format_exc()
+    print(error_details)
+    return JSONResponse(status_code=500, content={"detail": "Internal Server Error", "traceback": error_details})
+
 import os
 from dotenv import load_dotenv
 
