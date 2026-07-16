@@ -72,6 +72,10 @@ app.include_router(categories.router)
 def root():
     return {"message": "Personal Expense Analytics API", "version": "1.0.0", "docs": "/docs"}
 
+@app.get("/ping")
+def ping():
+    return {"status": "deployed_test_123"}
+
 
 @app.get("/health")
 def health():
