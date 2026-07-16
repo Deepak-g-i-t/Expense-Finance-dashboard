@@ -13,12 +13,17 @@ app = FastAPI(
 import traceback
 from fastapi import Request
 from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware
 
-@app.exception_handler(Exception)
-async def global_exception_handler(request: Request, exc: Exception):
-    error_details = traceback.format_exc()
-    print(error_details)
-    return JSONResponse(status_code=500, content={"detail": "Internal Server Error", "traceback": error_details})
+class ExceptionCatcherMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        try:
+            response = await call_next(request)
+            return response
+        except Exception as exc:
+            error_details = traceback.format_exc()
+            print("MIDDLEWARE CAUGHT:", error_details)
+            return JSONResponse(status_code=500, content={"detail": "Middleware Caught Error", "traceback": error_details})
 
 import os
 from dotenv import load_dotenv
@@ -33,6 +38,8 @@ allowed_origins = [
 frontend_url = os.getenv("FRONTEND_URL")
 if frontend_url:
     allowed_origins.append(frontend_url)
+
+app.add_middleware(ExceptionCatcherMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
