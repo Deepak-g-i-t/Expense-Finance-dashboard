@@ -105,15 +105,17 @@ export default function Sidebar() {
       </nav>
 
       {/* Mobile header */}
-      <header style={{
-        display: 'none', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 90,
-        background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)',
-        padding: '1rem', alignItems: 'center', gap: '1rem'
-      }} id="mobile-header">
+      <header className="mobile-header" id="mobile-header">
         <button className="btn btn-icon btn-secondary" onClick={() => setSidebarOpen(true)}>
           <Menu size={18} />
         </button>
-        <span style={{ fontWeight: 700, fontSize: '1.125rem' }}>ExpenseIQ</span>
+        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
+          <span style={{ fontWeight: 700, fontSize: '1.0625rem', lineHeight: 1.2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>ExpenseIQ</span>
+          <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{account?.display_name}</span>
+        </div>
+        <button className="btn btn-danger btn-icon" onClick={handleLogout} title="Logout" style={{ padding: '0.4rem' }}>
+          <LogOut size={16} />
+        </button>
       </header>
     </>
   )
