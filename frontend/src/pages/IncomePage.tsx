@@ -170,7 +170,7 @@ export default function IncomePage() {
                 <button className="btn btn-icon btn-secondary" onClick={() => setShowModal(false)}><X size={16} /></button>
               </div>
               <form onSubmit={handleSubmit}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="form-group" style={{ gridColumn: '1 / -1' }}>
                     <label className="form-label">Description *</label>
                     <input className="input" placeholder="e.g. Monthly salary from TCS" value={form.description}

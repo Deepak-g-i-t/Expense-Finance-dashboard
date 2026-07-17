@@ -102,7 +102,7 @@ export default function Dashboard() {
   if (loading) {
     return (
       <div style={{ padding: '2rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="skeleton" style={{ height: 120 }} />
           ))}
@@ -154,9 +154,9 @@ export default function Dashboard() {
         </div>
 
         {/* Charts Row 1 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
           {/* Monthly Trend */}
-          <div className="card">
+          <div className="card lg:col-span-2">
             <div style={{ fontWeight: 700, marginBottom: '1.25rem', fontSize: '1.0625rem' }}>Monthly Income vs Expense</div>
             <ResponsiveContainer width="100%" height={260}>
               <AreaChart data={trend} margin={{ top: 5, right: 10, left: -10, bottom: 0 }}>
@@ -216,7 +216,7 @@ export default function Dashboard() {
         </div>
 
         {/* Charts Row 2 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
           {/* Daily Spending */}
           <div className="card">
             <div style={{ fontWeight: 700, marginBottom: '1.25rem', fontSize: '1.0625rem' }}>Daily Spending (14 days)</div>

@@ -97,7 +97,7 @@ export default function AnalyticsPage() {
 
         {/* Highlights */}
         {data && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
             {data.highest_expense && (
               <div className="card" style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.2)' }}>
                 <div style={{ fontSize: '0.8125rem', color: '#ef4444', fontWeight: 600, marginBottom: '0.5rem' }}>🏆 Highest Expense</div>
@@ -118,7 +118,7 @@ export default function AnalyticsPage() {
         )}
 
         {/* Charts Row 1 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
           {/* Category Breakdown */}
           <div className="card">
             <div style={{ fontWeight: 700, marginBottom: '1.25rem', fontSize: '1.0625rem' }}>Category Breakdown</div>

@@ -75,7 +75,7 @@ export default function CalendarPage() {
 
       <div className="page-body">
         {/* Month Summary */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="stat-card">
             <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: '0.375rem' }}>Month Income</div>
             <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#22c55e' }}>{currency}{monthTotals.income.toLocaleString('en-IN')}</div>
@@ -191,7 +191,7 @@ export default function CalendarPage() {
               ) : (
                 <>
                   {/* Day Summary */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
                     <div style={{ padding: '0.875rem', background: 'rgba(34,197,94,0.1)', borderRadius: 10, border: '1px solid rgba(34,197,94,0.2)' }}>
                       <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Income</div>
                       <div style={{ fontWeight: 800, color: '#22c55e' }}>

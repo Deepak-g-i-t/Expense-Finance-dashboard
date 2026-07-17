@@ -134,7 +134,7 @@ export default function SettingsPage() {
       <div className="page-body" style={{ maxWidth: 700 }}>
         {/* Profile & Preferences */}
         <Section icon={User} title="Profile & Preferences">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="form-group">
               <label className="form-label">Display Name</label>
               <input className="input" value={form.display_name} onChange={e => setForm(f => ({ ...f, display_name: e.target.value }))} />
@@ -201,7 +201,7 @@ export default function SettingsPage() {
                   </button>
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-group">
                   <label className="form-label">New PIN</label>
                   <input className="input pin-input" type="password" maxLength={8} placeholder="••••"

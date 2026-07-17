@@ -96,7 +96,7 @@ export default function TransactionsPage() {
 
       <div className="page-body">
         {/* Summary Row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1.5rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="stat-card">
             <div style={{ color: 'var(--text-muted)', fontSize: '0.8125rem', marginBottom: '0.5rem' }}>Showing Income</div>
             <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#22c55e' }}>+{currency}{totalIncome.toLocaleString('en-IN')}</div>
